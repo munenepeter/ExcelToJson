@@ -1,0 +1,20 @@
+<?php
+
+//get thhe data sent over post
+$data = json_decode(file_get_contents("php://input"), true);
+
+//generate random name for successive files
+$randomStr = substr(str_shuffle(MD5(microtime())), 0, 10);  
+
+//write to a file
+$jsonfile = "../samples/json/jsonfile-$randomStr.json";
+$file = fopen($jsonfile, 'w');
+fwrite($file, json_encode($data));
+fclose($file);
+
+//check if the file exists so as to return a response
+if (file_exists($jsonfile)) {
+    echo "Success: Your .json file is ready at <b>$jsonfile</b>";
+} else {
+   echo "Error: Something happened and we could not create the .json file";
+}
