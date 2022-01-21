@@ -1,5 +1,5 @@
 let selectedFile;
-document.getElementById('input').addEventListener("change", (event) => {
+document.getElementById('inputfile').addEventListener("change", (event) => {
     selectedFile = event.target.files[0];
 });
 
