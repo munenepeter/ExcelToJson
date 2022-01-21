@@ -14,7 +14,8 @@ fclose($file);
 
 //check if the file exists so as to return a response
 if (file_exists($jsonfile)) {
-    echo "Success: Your .json file is ready at <b>$jsonfile</b>";
+    echo "Success: Your .json file is ready at <a class=\"text-green-500 hover:underline\" href=\"$jsonfile\" target=\"_blank\">$jsonfile</a>";
 } else {
    echo "Error: Something happened and we could not create the .json file";
 }
+
