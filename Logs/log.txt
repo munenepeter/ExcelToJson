@@ -1,0 +1,8 @@
+Mon, 24 Jan 2022 14:38:48 - localhost - /src/handle.php - Reached handle.php
+Mon, 24 Jan 2022 14:38:48 - localhost - /src/handle.php - Received data from axios => {"data":"ffffff"}
+Mon, 24 Jan 2022 14:39:31 - localhost - /src/handle.php - Reached handle.php
+Mon, 24 Jan 2022 14:39:31 - localhost - /src/handle.php - Received data from axios => {"data":"ffffff"}
+Mon, 24 Jan 2022 14:42:06 - localhost - /src/handle.php - Reached handle.php
+Mon, 24 Jan 2022 14:42:06 - localhost - /src/handle.php - Received data from axios => {"data":{"filename":"Report - 02.03.2021_example.xlsx"}}
+[Mon, 24 Jan 2022 14:43:49] - localhost - /src/handle.php - Reached handle.php
+[Mon, 24 Jan 2022 14:43:49] - localhost - /src/handle.php - Received data from axios => {"data":{"filename":"Queued_project_test.xlsx"}}
