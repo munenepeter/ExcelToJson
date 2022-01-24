@@ -16,7 +16,7 @@ function formatToJSON(array $data): String{
 }
 
  
-
+// create a logger
 $logger = new class {
     
     public String $log = "";
