@@ -8,6 +8,8 @@ $randomStr = substr(str_shuffle(MD5(microtime())), 0, 10);
 
 //write to a file
 $jsonfile = "../samples/json/jsonfile-$randomStr.json";
+
+
 $file = fopen($jsonfile, 'w');
 fwrite($file, json_encode($data));
 fclose($file);
