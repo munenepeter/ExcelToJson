@@ -4,6 +4,7 @@
 $data = json_decode(file_get_contents("php://input"), true);
 
 //generate random name for successive files
+//use $$ to get dynamic filenames
 $randomStr = substr(str_shuffle(MD5(microtime())), 0, 10);  
 
 //write to a file
