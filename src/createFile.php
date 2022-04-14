@@ -13,7 +13,8 @@ $jsonfile = "../samples/json/jsonfile-$fileName.json";
 
 
 $file = fopen($jsonfile, 'w');
-fwrite($file, json_encode(array_shift($data['datajson'])));
+$fData = array_shift($data['datajson']);
+fwrite($file, json_encode($fData));
 fclose($file);
 
 //check if the file exists so as to return a response
