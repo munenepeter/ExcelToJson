@@ -10,11 +10,10 @@ $fileName = $data['datajson'][0];
 
 //write to a file
 $jsonfile = "../samples/json/jsonfile-$fileName.json";
-
+array_shift($data['datajson']);
 
 $file = fopen($jsonfile, 'w');
-$fData = array_shift($data['datajson']);
-fwrite($file, json_encode($fData));
+fwrite($file, json_encode($data));
 fclose($file);
 
 //check if the file exists so as to return a response
