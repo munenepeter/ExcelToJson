@@ -25,7 +25,7 @@
                                 <label class="m-auto block mb-2 text-sm font-medium text-gray-900" for="inputfile">Upload
                                         file</label>
                         </center>
-                        <input type="file" name="file" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:border-transparent" id="inputfile" accept=".xls,.xlsx">
+                        <input type="file" name="inputfile" name="file" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:border-transparent" id="inputfile" accept=".xls,.xlsx">
 
                         <div class="my-4 text-sm text-center text-gray-500" id="inputfile_help">Please make sure you upload an excel
                                 document</div>
@@ -36,7 +36,7 @@
                 </form>
 
                 <p class="my-4 text-sm font-medium italic text-center text-green-400" id="response"></p>
-               
+
         </div>
 
         <div class="mx-auto p-4 max-w-fit bg-white ">
