@@ -6,10 +6,10 @@ $data = json_decode(file_get_contents("php://input"), true);
 // var_dump($data);
 //generate random name for successive files
 //use $$ to get dynamic filenames
-$fileName = $data['datajson'][0];  
-
+$fileName = preg_replace('/\s+/', '-', $data['datajson'][0]);  
+$$fileName = trim($fileName);
 //write to a file
-$jsonfile = "../samples/json/jsonfile-$fileName.json";
+$jsonfile = "../samples/json/jsonfile-{$$fileName}.json";
 array_shift($data['datajson']);
 
 $file = fopen($jsonfile, 'w');

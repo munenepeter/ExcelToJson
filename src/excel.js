@@ -29,7 +29,7 @@ document.getElementById('button').addEventListener("click", () => {
             });
 
             //added sth to create the 'json' file
-            axios.post('http://localhost:3000/src/createFile.php', { datajson },
+            axios.post('http://localhost:8989/src/createFile.php', { datajson },
                 {
                     headers: {
                         'Content-Type': 'application/json',
