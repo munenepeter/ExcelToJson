@@ -42,9 +42,6 @@
     <div class="mx-auto p-4 max-w-fit bg-white ">
         <pre id="jsondata"></pre>
     </div>
-
-
-
     <script>
         document.getElementById('button').addEventListener("click", () => {
 
@@ -57,13 +54,12 @@
 
         function postData(formData) {
 
-            axios.post('/src/createFile.php', formData, {
+            axios.post('/src/convert.php', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 })
                 .then(function (response) {
-                    console.log(response);
                     document.getElementById("response").innerHTML = response.data;
                 })
                 .catch(function (error) {
