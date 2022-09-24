@@ -110,7 +110,8 @@ $$fileName = trim($fileName);
 $jsonfile = "../samples/json/{$$fileName}.json";
 
 $file = fopen($jsonfile, 'w');
-fwrite($file, json_encode($final));
+//unescape the slashes
+fwrite($file, json_encode($final, JSON_UNESCAPED_SLASHES));
 fclose($file);
 
 //check if the file exists so as to return a response
