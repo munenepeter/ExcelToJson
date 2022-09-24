@@ -24,12 +24,13 @@ $headers = $spreadsheet->getActiveSheet()->rangeToArray('A1:L1', "", FALSE, TRUE
 $datas = $spreadsheet->getActiveSheet()->rangeToArray('A2:L10', "", FALSE, TRUE, false);
 
 
-for ($i=0; $i < count($datas); $i++) { 
-   if(!empty($datas[$i][0])){
-    continue;
-   }else{
-    unset($datas[$i]);
-   } 
+for ($i=0; $i <= 10; $i++) { 
+    if(!empty($datas[$i][0])){
+        continue;
+    }else{
+        unset($datas[$i]);
+    }
+    
 }
 
 
