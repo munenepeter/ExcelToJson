@@ -23,7 +23,7 @@ $headers = $spreadsheet->getActiveSheet()->rangeToArray('A1:L1', "", FALSE, TRUE
 //But for now will add a dangerous 'safe no 10
 $datas = $spreadsheet->getActiveSheet()->rangeToArray('A2:L10', "", FALSE, TRUE, false);
 
-
+//remove empty cells
 for ($i=0; $i <= 10; $i++) { 
     if(!empty($datas[$i][0])){
         continue;
