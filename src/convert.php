@@ -24,6 +24,9 @@ $headers = $spreadsheet->getActiveSheet()->rangeToArray('A1:L1', "", FALSE, TRUE
 $datas = $spreadsheet->getActiveSheet()->rangeToArray('A2:L10', "", FALSE, TRUE, false);
 
 
+$datas = array_filter($datas);
+
+
 
 $headers = [
     "issuing_body",
@@ -45,7 +48,7 @@ function randomString() {
     $characters = array_merge(range(0,9),range('a','z'),range('A','Z'));
     $randstring = [];
     for ($i = 0; $i < 24; $i++) {
-        array_push($randstring, $characters[rand(0, count($characters)-$i)]);
+        array_push($randstring, $characters[rand(0, count($characters)-1)]);
     }
     return implode("",$randstring);
 }
