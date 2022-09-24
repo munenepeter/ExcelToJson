@@ -19,7 +19,9 @@ $spreadsheet = $reader->load($_FILES['excelFile']["tmp_name"]);
 
 
 $headers = $spreadsheet->getActiveSheet()->rangeToArray('A1:L1', "", FALSE, TRUE, false)[0];
-$datas = $spreadsheet->getActiveSheet()->rangeToArray('A2:L7', "", FALSE, TRUE, false);
+//Should change to have only occupied cells 
+//But for now will add a dangerous 'safe no 10
+$datas = $spreadsheet->getActiveSheet()->rangeToArray('A2:L10', "", FALSE, TRUE, false);
 
 
 
@@ -55,9 +57,6 @@ function convertDate($exceldate) {
     return gmdate("d/m/Y", $UNIX_DATE);
     //return Date::excelToDateTimeObject($exceldate)->date;
 }
-
-
-
 
 
 //remove nulls & combine the headers & data
