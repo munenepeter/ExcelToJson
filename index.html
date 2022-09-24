@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.min.css" />
     <title>Convert excel to JSON Object</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
 </head>
 
 <body>
@@ -43,19 +42,12 @@
     <div class="mx-auto p-4 max-w-fit bg-white ">
         <pre id="jsondata"></pre>
     </div>
-    <script src="https://unpkg.com/@themesberg/flowbite@1.3.0/dist/flowbite.bundle.js"></script>
-    <!-- <script src="/src/excel.js"></script> -->
+
 
 
     <script>
-        let selectedFile;
-        document.getElementById('inputfile').addEventListener("change", (event) => {
-
-            selectedFile = event.target.files[0];
-        });
-
         document.getElementById('button').addEventListener("click", () => {
-           
+
             var formData = new FormData();
             var Efile = document.querySelector('#inputfile');
             formData.append("excelFile", Efile.files[0]);
@@ -66,10 +58,17 @@
         function postData(formData) {
 
             axios.post('/src/createFile.php', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(function (response) {
+                    console.log(response);
+                    document.getElementById("response").innerHTML = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     </script>
 </body>
