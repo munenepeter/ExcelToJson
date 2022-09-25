@@ -1,14 +1,5 @@
 <?php
 
-//get thhe data sent over post
-//$data = json_encode(file_get_contents("php://input"));
-
-
-
-
-
-
-
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 
