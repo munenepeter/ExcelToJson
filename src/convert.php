@@ -18,7 +18,7 @@ $highestColumn = $activeSheet->getHighestColumn();
 $headers = $activeSheet->rangeToArray("A1:{$highestColumn}1", "", FALSE, TRUE, false)[0];
 //Should change to have only occupied cells 
 //But for now will add a dangerous 'safe no 10
-$datas = $activeSheet->rangeToArray("A2:{$highestColumn}100000", "", FALSE, TRUE, false);
+$datas = $activeSheet->rangeToArray("A2:{$highestColumn}100000", "", true, TRUE, false);
 
 //remove empty cells
 for ($i = 0; $i <= 100000; $i++) {
@@ -56,8 +56,6 @@ $data = array_map(function ($v) {
 //Add the final format
 $final = [
     "total" => count($data),
-    "hRow" => $highestRow,
-    "hCol" => $highestColumn,
     "items" => $data
 ];
 
