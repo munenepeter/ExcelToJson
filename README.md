@@ -3,7 +3,7 @@ A simple application that takes an Excel and converts it to a json file;
 
 ## Note
 
-> The JSON file created is in a specific format so its not for use for all excel files, to achieve that simply extend the project :)
+> Due to php memory limits we can only parse a total of 100,000 rows
 
 The project utilises [phpoffice/phpspreadsheet](https://github.com/PHPOffice/PhpSpreadsheet) to parse the excel file.
 
@@ -26,8 +26,12 @@ Then run your development server
 ```sh
 php -S localhost:8088
 ```
-Finally visit http://localhost:8088/ to see the tool
+Finally visit http://localhost:8088/ to see upload and get your json file
 
+
+## Known Issues
+ 1. The json returned has an extra empty field, don't know why
+ 2. Can only parse the first sheet of a workbook 
 ## License
 
 MIT
