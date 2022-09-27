@@ -32,6 +32,8 @@ Finally visit http://localhost:8088/ to see upload and get your json file
 ## Known Issues
  1. The json returned has an extra empty field, don't know why
  2. Can only parse the first sheet of a workbook 
+
+ For other issues, bugs or feature suggestion feel to reach out to the dev
 ## License
 
 MIT
