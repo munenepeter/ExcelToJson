@@ -16,48 +16,26 @@ require_once("../vendor/autoload.php");
 $reader = new Xlsx();
 $reader->setReadDataOnly(true);
 $spreadsheet = $reader->load($_FILES['excelFile']["tmp_name"]);
+$activeSheet = $spreadsheet->getActiveSheet();
+
+$highestRow = $activeSheet->getHighestRow();
+$highestColumn = $activeSheet->getHighestColumn();
 
 
-$headers = $spreadsheet->getActiveSheet()->rangeToArray('A1:L1', "", FALSE, TRUE, false)[0];
+
+
+$headers = $activeSheet->rangeToArray("A1:{$highestColumn}1", "", FALSE, TRUE, false)[0];
 //Should change to have only occupied cells 
 //But for now will add a dangerous 'safe no 10
-$datas = $spreadsheet->getActiveSheet()->rangeToArray('A2:L10', "", FALSE, TRUE, false);
+$datas = $activeSheet->rangeToArray("A2:{$highestColumn}100000", "", FALSE, TRUE, false);
 
 //remove empty cells
-for ($i=0; $i <= 10; $i++) { 
-    if(!empty($datas[$i][0])){
+for ($i = 0; $i <= 100000; $i++) {
+    if (!empty($datas[$i][0])) {
         continue;
-    }else{
+    } else {
         unset($datas[$i]);
     }
-    
-}
-
-
-
-$headers = [
-    "issuing_body",
-    "document_name",
-    "page_url",
-    "extracted_at",
-    "jurisdiction",
-    "effective_date",
-    "public_response_date",
-    "document_type1",
-    "document_type2",
-    "document_type3",
-    "document_type4",
-    "document_type5"
-];
-
-
-function randomString() {
-    $characters = array_merge(range(0,9),range('a','z'),range('A','Z'));
-    $randstring = [];
-    for ($i = 0; $i < 24; $i++) {
-        array_push($randstring, $characters[rand(0, count($characters)-1)]);
-    }
-    return implode("",$randstring);
 }
 
 
@@ -77,35 +55,19 @@ foreach ($datas as $data) {
 
     $vs[] = array_combine($headers, $data);
 }
-//consolidate all the DTs in one line
-function getDTs(...$v) {
-    $dts = [];
-    for ($i = 0; $i < count($v); $i++) {
-        if ($i == 0) {
-            $dts[] = $v[$i];
-            continue;
-        }
-        if ($v[$i] !== "") {
-            array_push($dts, $v[$i]);
-        }
-        
-    }
-    return implode(", ",$dts);
-}
+
 //And the extra values & format the excel dates
 $data = array_map(function ($v) {
-    $v['extracted_at'] = convertDate($v['extracted_at']);
-    $v['effective_date'] = convertDate($v['effective_date']);
-    $v['public_response_date'] = convertDate($v['public_response_date']);
-    $v['document_type'] = getDTs($v['document_type1'], $v['document_type2'], $v['document_type3'], $v['document_type4'], $v['document_type5']);
-    $v['spider_id'] = randomString();
+    // TODO Format the data
     return $v;
 }, $vs);
 
 //Add the final format
 $final = [
     "total" => count($data),
-    "articles" => $data
+    "hRow" => $highestRow,
+    "hCol" => $highestColumn,
+    "items" => $data
 ];
 
 
@@ -113,7 +75,7 @@ $final = [
 //From here we write to a file
 
 //use $$ to get dynamic filenames
-$fileName = preg_replace('/\s+/', '-', $_FILES['excelFile']["name"]);  
+$fileName = preg_replace('/\s+/', '-', $_FILES['excelFile']["name"]);
 $$fileName = trim($fileName);
 
 //write to a file
@@ -128,5 +90,5 @@ fclose($file);
 if (file_exists($jsonfile)) {
     echo "Success: Your .json file is ready at <a class=\"text-green-500 hover:underline\" href=\"$jsonfile\" target=\"_blank\">$jsonfile</a>";
 } else {
-   echo "Error: Something happened and we could not create the .json file";
+    echo "Error: Something happened and we could not create the .json file";
 }
