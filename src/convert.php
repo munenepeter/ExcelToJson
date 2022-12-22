@@ -1,5 +1,5 @@
 <?php
-
+ini_set('memory_limit', '-1');
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 
@@ -39,6 +39,7 @@ function convertDate($exceldate) {
 
 
 //remove nulls & combine the headers & data
+$vs = [];
 foreach ($datas as $data) {
     $data = array_map(function ($v) {
         return (is_null($v)) ? "" : $v;
@@ -46,6 +47,7 @@ foreach ($datas as $data) {
 
     $vs[] = array_combine($headers, $data);
 }
+
 
 //And the extra values & format the excel dates
 $data = array_map(function ($v) {
