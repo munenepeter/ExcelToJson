@@ -15,10 +15,10 @@ Clone the project
 git clone https://github.com/munenepeter/ExcelToJson.git
 ```
 
-Install PhpSpreadsheet using [composer](https://getcomposer.org):
+Install [composer](https://getcomposer.org): dependecies
 
 ```sh
-composer require phpoffice/phpspreadsheet
+composer install
 ```
 
 Then run your development server
